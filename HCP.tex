@@ -1,0 +1,231 @@
+%% 
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+
+%% \documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+\usepackage{amsmath}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+\usepackage{bm}
+\usepackage{mathrsfs}
+
+\usepackage{graphicx}
+\usepackage{lscape}
+%\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+
+\usepackage[caption=false]{subfig}% Support for small, `sub' figures and tables
+
+\usepackage{bmpsize}
+
+\hyphenation{author another created financial paper re-commend-ed Post-Script}
+
+%\usepackage{cite}
+\usepackage{natbib}
+\usepackage{pxfonts}
+%% \citestyle{nature}
+
+\usepackage{xr}
+\usepackage{color}
+
+\usepackage{lineno}
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+
+%% Page Head and End
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{}
+\chead{\textit{}}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+%\renewcommand{\headrulewidth}{0.4pt} 
+%\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+\usepackage[colorlinks, linkcolor=blue, anchorcolor=blue, citecolor=blue]{hyperref}
+
+\usepackage{siunitx} % SI units package
+
+% VECTOR convention for bold symbol
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+% Angstrom for math environment
+\def\Ang{\mbox{\AA}}
+
+% UPRIGHT convention for tensors
+\def\tensor#1{\text{#1}}
+
+%NORM definition
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+%COMMENT conventions
+\def\rcomment#1{\textcolor{red}{\textit{[#1]}}}
+
+%Two lines in table
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
+\graphicspath{{./Figures/}}
+%\journal{Report}
+
+
+\makeatletter
+% Remove two horizontal lines in the Abstract section
+  \long\def\pprintMaketitle{\clearpage
+  \iflongmktitle\if@twocolumn\let\columnwidth=\textwidth\fi\fi
+  \resetTitleCounters
+  \def\baselinestretch{1}%
+  \printFirstPageNotes
+  \begin{center}%
+ \thispagestyle{pprintTitle}%
+   \def\baselinestretch{1}%
+    \Large\@title\par\vskip18pt
+    \normalsize\elsauthors\par\vskip10pt
+    \footnotesize\itshape\elsaddress\par\vskip36pt
+    % \hrule\vskip12pt
+    % \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
+    % \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
+    % \hrule\vskip12pt
+    \end{center}%
+  \gdef\thefootnote{\arabic{footnote}}%
+  }
+% Remove 'Preprint' on first page
+\def\ps@pprintTitle{%
+ \let\@oddhead\@empty
+ \let\@evenhead\@empty
+ \def\@oddfoot{\centerline{\thepage}}%
+ \let\@evenfoot\@oddfoot}
+\makeatother
+
+\begin{document}
+	% \linenumbers
+	
+	\begin{frontmatter}
+		
+		%% Title, authors and addresses
+		
+		%% use the tnoteref command within \title for footnotes;
+		%% use the tnotetext command for theassociated footnote;
+		%% use the fnref command within \author or \address for footnotes;
+		%% use the fntext command for theassociated footnote;
+		%% use the corref command within \author for corresponding author footnotes;
+		%% use the cortext command for theassociated footnote;
+		%% use the ead command for the email address,
+		%% and the form \ead[url] for the home page:
+		%% \title{Title\tnoteref{label1}}
+		%% \tnotetext[label1]{}
+		%% \author{Name\corref{cor1}\fnref{label2}}
+		%% \ead{email address}
+		%% \ead[url]{home page}
+		%% \fntext[label2]{}
+		%% \cortext[cor1]{}
+		%% \address{Address\fnref{label3}}
+		%% \fntext[label3]{}
+		
+		\title{\textbf{HCP slip}}
+		
+		%% use optional labels to link authors explicitly to addresses:
+		%% \author[label1,label2]{}
+		%% \address[label1]{}
+		%% \address[label2]{}
+		
+
+
+\end{frontmatter}
+
+%%
+%% Start line numbering here if you want
+%%
+%\linenumbers
+
+%% main text
+
+ 
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}         ==>>  [#]
+%%   \cite[chap. 2]{key} ==>> [#, chap. 2]
+%%
+
+%% References with bibTeX database:
+\clearpage
+
+\bibliographystyle{elsarticle-num}
+\biboptions{square,numbers,sort&compress}
+%\bibliographystyle{apsrev}
+\bibliography{Biblio/hcp.bib}
+
+%% Authors are advised to submit their bibtex database files. They are
+%% requested to list a bibtex style file in the manuscript if they do
+%% not want to use elsarticle-num.bst.
+
+%% References without bibTeX database:
+
+% \begin{thebibliography}{00}
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+% \bibitem{}
+
+% \end{thebibliography}
+
+\end{document}
+
+%%
+%% End of file `elsarticle-template-num.tex'.
